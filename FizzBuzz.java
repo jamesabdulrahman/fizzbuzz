@@ -1,4 +1,8 @@
+import java.util.HashMap;
+
 public class FizzBuzz {
+
+	private static HashMap<Integer, String> fizzes;
 
 	public static void count(int start, int end) {
 	/*
@@ -10,25 +14,26 @@ public class FizzBuzz {
 	 */
 
 	 for (int i = start; i <= end; i++) {
-		 boolean fizz = i % 3 == 0;
-		 boolean buzz = i % 5 == 0;
-
-		 if (fizz && buzz) {
-			 System.out.println("fizzbuzz");
+		 StringBuilder output = new StringBuilder();
+		 // Divide by each key in the fizzes map, and append the substitution.
+		 for (int k : fizzes.keySet()) {
+			 if (i % k == 0) {
+				 output.append(fizzes.get(k));
+			 }
 		 }
-		 else if (fizz) {
-			 System.out.println("fizz");
+		 // If the stringbuilder is empty, we know nothing divided evenly.
+		 if (output.length() == 0) {
+			 output.append(i);
 		 }
-		 else if (buzz) {
-			 System.out.println("buzz");
-		 }
-		 else {
-			 System.out.println(i);
-		 }
+		 System.out.println(output);
 	 }
 	}
 
 	public static void main(String[] args) {
+		fizzes = new HashMap<Integer, String>();
+		fizzes.put(3, "fizz");
+		fizzes.put(5, "buzz");
+		fizzes.put(7, "woof");
 		FizzBuzz.count(1, 100);
 	}
 }
