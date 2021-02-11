@@ -1,3 +1,5 @@
+package asia.bitbasket.app;
+
 import java.util.HashMap;
 
 public class FizzBuzz {
