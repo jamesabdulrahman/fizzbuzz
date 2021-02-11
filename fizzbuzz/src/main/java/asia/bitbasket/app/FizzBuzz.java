@@ -57,4 +57,8 @@ public class FizzBuzz {
 		fizzes.put(5, "buzz");
 		fizzes.put(7, "woof");
 	}
+
+	public HashMap<Integer, String> getCache() {
+		return cache;
+	}
 }
