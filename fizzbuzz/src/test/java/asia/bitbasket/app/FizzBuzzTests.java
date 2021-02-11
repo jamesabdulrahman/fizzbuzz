@@ -1,14 +1,19 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import asia.bitbasket.app.FizzBuzz;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 
 class FizzBuzzTests {
 
-  private FizzBuzz fb = new FizzBuzz();
+  private FizzBuzz fb;
+
+  @BeforeEach
+  public void setup() {
+    fb = new FizzBuzz();
+  }
 
   @ParameterizedTest
   @ValueSource(ints = {3, 6, 9, 18})
@@ -49,5 +54,13 @@ class FizzBuzzTests {
   @Test
   public void testZero() {
     assertEquals("fizzbuzzwoof", fb.fizzbuzz(0));
+  }
+
+  @Test
+  public void testCache() {
+    assertFalse(fb.getCache().containsKey(1));
+    fb.fizzbuzz(1);
+    assertTrue(fb.getCache().containsKey(1));
+    assertFalse(fb.getCache().containsKey(2));
   }
 }
