@@ -48,12 +48,11 @@ public class FizzBuzz {
 	 }
 	}
 
-	public static void main(String[] args) {
+	public FizzBuzz() {
 		cache = new HashMap<Integer, String>();
 		fizzes = new HashMap<Integer, String>();
 		fizzes.put(3, "fizz");
 		fizzes.put(5, "buzz");
 		fizzes.put(7, "woof");
-		FizzBuzz.count(1, 100);
 	}
 }
